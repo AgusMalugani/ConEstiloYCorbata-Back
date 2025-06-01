@@ -1,12 +1,15 @@
 import express, { Request, Response } from 'express'
 import { AppDataSource } from './config/typeOrm.config'
-const app = express()
-const port = 3000
-app.use(express.json())
+import * as dotenv from "dotenv";
+import router from './routes/index.routes';
+dotenv.config();
 
-app.get('/', (req:Request, res:Response) => {
-  res.send('Hello World!')
-})
+const app = express()
+const port = process.env.BACK_PORT || 3000
+app.use(express.json())
+app.use(router)
+
+
 
 AppDataSource
     .initialize()
