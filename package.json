@@ -6,13 +6,16 @@
   "author": "",
   "type": "commonjs",
   "main": "app.js",
- "scripts": {
-  "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
-  "build": "tsc",
-  "start": "node dist/app.js"
-},
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "pg": "^8.16.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.24"
   },
   "devDependencies": {
     "@types/express": "^5.0.2",
