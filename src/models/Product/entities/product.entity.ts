@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Order } from "../../Order/entities/order.entity";
+import { CategoryEnum } from "../../../enums/category.enum";
 @Entity()
 export class Product{
 @PrimaryGeneratedColumn("uuid")
@@ -12,11 +13,10 @@ talle:string;
 color:string;
 @Column()
 stock:number;
-@Column()
-categoria:string; //enum
+@Column({type:"enum", enum:CategoryEnum})
+categoria:CategoryEnum; 
 @Column()
 precio:number;
 @ManyToMany(()=>Order,(ord)=> ord.productos )
 ordenes: Order[]
-
 }
