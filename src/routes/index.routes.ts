@@ -9,7 +9,7 @@ router.get('/', (req:Request, res:Response) => {
   res.send('Hello World!')
 })
 
-router.use("/product",productRouter);
-router.use("/order",orderRouter);
+router.use("/products",productRouter);
+router.use("/orders",orderRouter);
 
 export default router;

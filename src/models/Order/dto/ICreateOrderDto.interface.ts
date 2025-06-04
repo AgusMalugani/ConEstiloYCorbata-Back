@@ -1,3 +1,5 @@
+import { Product } from "../../Product/entities/product.entity"
+
 export interface ICreateOrderDto{
     seña:number,
     resto:number,

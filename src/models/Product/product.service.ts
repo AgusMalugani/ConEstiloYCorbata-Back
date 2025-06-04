@@ -1,14 +1,40 @@
 import { ICreateProductDto } from "./dto/ICreateProductDto.interface";
+import productRepository from './../../repositories/product.repository';
+import { Product } from "./entities/product.entity";
 
 export class ProductService {
-    // This service will handle the business logic for products
-    async getAllProducts() {
-        return { message: "All products retrieved" };
+
+    async findAll() {
+        return await productRepository.find(); //{relations:{ordenes:true}}
     }
 
-    async createProduct(productData: ICreateProductDto) {
-        return { message: "Product created", product: productData };
+    async createProduct(createProductDto: ICreateProductDto) {
+        const newProduct = productRepository.create(createProductDto)
+        return await productRepository.save(newProduct);
     }
 
-    // Additional methods for updating and deleting products can be added here
+    async findByIds(ids:string[]) : Promise<(Product)[]>{
+        try{
+            const products = await Promise.all(ids.map(async id=> {
+                return await this.findById(id);
+            }))
+            
+            return products;
+        } catch(error){
+            console.log("error en el array de ids",error);
+            throw new Error("Error al buscar los productos por id")
+            
+        }
+    }
+
+    async findById(id:string){
+        const product = await productRepository.findOne({where:{id}});
+        if(!product){
+            console.log("no se encuentra el producto con ese id",id);
+            throw new Error(`Producto con id ${id} no encontrado`);
+        } else{
+            return product;
+        }
+    }
+
 }

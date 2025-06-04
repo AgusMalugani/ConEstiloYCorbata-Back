@@ -8,7 +8,7 @@ id: string
 @Column()
 nombre:string
 @Column()
-talle:string;
+talle:number;
 @Column()
 color:string;
 @Column()
