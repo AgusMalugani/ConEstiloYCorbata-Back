@@ -22,4 +22,18 @@ async findById(id: string) : Promise<Order | null> {
     }); 
 }
 
+async updateOrder(id:string,createOrderDto : Partial<ICreateOrderDto>){
+const order = await this.findById(id);
+if(!order){
+    throw new Error("Order not found");
+}
+Object.assign(order,createOrderDto)
+return await orderRepository.save(order);
+}
+
+async deleteOrder(id:string){
+    const isActive=false;
+    return await this.updateOrder(id,{isActive})
+}
+
 }

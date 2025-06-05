@@ -17,6 +17,8 @@ stock:number;
 categoria:CategoryEnum; 
 @Column()
 precio:number;
+@Column({default:true})
+isActive : boolean
 @ManyToMany(()=>Order,(ord)=> ord.productos )
 ordenes: Order[]
 }

@@ -7,4 +7,5 @@ export interface ICreateProductDto{
     stock:number,
     categoria:CategoryEnum, //enum
     precio:number
+    isActive?:boolean //opcional, por defecto true
 }

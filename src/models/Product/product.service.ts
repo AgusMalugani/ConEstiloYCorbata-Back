@@ -37,4 +37,12 @@ export class ProductService {
         }
     }
 
+    async updateProduct(id:string, updateData: Partial<ICreateProductDto>) {
+        const product = await this.findById(id);
+        if (!product) {
+            throw new Error(`Producto con id ${id} no encontrado`);
+        }
+        Object.assign(product, updateData);
+        return await productRepository.save(product);
+    }
 }

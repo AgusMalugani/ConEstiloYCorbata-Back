@@ -20,11 +20,17 @@ export class ProductController {
       res.status(200).json(product)
      }
     
-    // async updateProduct(req, res) {
-    //   // Logic to update an existing product
-    // }
+     updateProduct = async (req:Request, res:Response) => {
+     const {id}=req.params;
+      const {stock,precio} = req.body;
+      const product = await this.productService.updateProduct(id,{stock,precio});
+      res.status(200).json({message:"Producto actualizado",data : product})
+    }
     
-    // async deleteProduct(req, res) {
-    //   // Logic to delete a product
-    // }
+    deleteProduct= async (req:Request, res:Response)=> {
+      const{id} = req.params;
+      const isActive=false;
+      const product = await this.productService.updateProduct(id,{isActive});
+      res.status(200).json({message:"Producto eliminado",data:product})
+    }
 }
