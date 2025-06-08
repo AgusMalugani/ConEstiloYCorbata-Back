@@ -28,6 +28,7 @@ updateOrder = async (req:Request,res:Response) =>{
 const {id}= req.params;
 const {seña,resto,celular,productos}=req.body;
 const order = await this.orderService.updateOrder(id,{seña,resto,celular,productos});
+res.status(200).json({message:"Orden modificada", order})
 }
 
 deleteOrder = async (req:Request, res:Response)=>{
@@ -36,6 +37,11 @@ const order = await this.orderService.deleteOrder(id);
 res.status(200).json({message:"orden eliminada con exito", data:order});
 }
 
+deliveredOrder = async (req:Request,res:Response)=>{
+const{id}=req.params;
+const order = await this.orderService.deliveredOrder(id)
+res.status(200).json({message:"Orden entregada y finalizada",order })
+}
 
 
 

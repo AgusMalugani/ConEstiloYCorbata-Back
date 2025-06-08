@@ -13,6 +13,7 @@ export class ProductService {
         return await productRepository.save(newProduct);
     }
 
+    //TODO: Se debe descontar el stock del producto
     async findByIds(ids:string[]) : Promise<(Product)[]>{
         try{
             const products = await Promise.all(ids.map(async id=> {

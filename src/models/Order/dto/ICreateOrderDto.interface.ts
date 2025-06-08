@@ -5,4 +5,5 @@ export interface ICreateOrderDto{
     celular:string
     productos: string[] //array de ids
     isActive?: boolean
+    entregado?:boolean
 }
