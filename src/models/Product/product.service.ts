@@ -5,11 +5,11 @@ import { Product } from "./entities/product.entity";
 export class ProductService {
 
     async findAll() {
-        return await productRepository.find(); //{relations:{ordenes:true}}
+        return await productRepository.find({where:{isActive:true}}); //{relations:{ordenes:true}}
     }
 
     async createProduct(createProductDto: ICreateProductDto) {
-        const newProduct = productRepository.create(createProductDto)
+        const newProduct = productRepository.create({...createProductDto,isActive:true})
         return await productRepository.save(newProduct);
     }
 

@@ -9,5 +9,8 @@ productRouter.get("/:id",productController.findOneProductById)
 
 productRouter.post("/",productController.createProduct)
 
+productRouter.put("/:id",productController.updateProduct)
+
+productRouter.put("/delete/:id",productController.deleteProduct)
 
 export default productRouter;

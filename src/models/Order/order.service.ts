@@ -11,7 +11,7 @@ async createOrder(createOrderDto : ICreateOrderDto) : Promise<Order>{
     return await orderRepository.save(newOrder);
 }
 
-async findAll() : Promise<Order[]> {
+async findAll() { // : Promise<Order[]>
     return await orderRepository.find({relations: {productos:true}});
 }
 

@@ -1,5 +1,6 @@
-import { Column, Entity, JoinColumn, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Product } from "../../Product/entities/product.entity";
+
 
 @Entity()
 export class Order {
@@ -16,6 +17,6 @@ export class Order {
     @Column({default:true})
     isActive:boolean;
     @ManyToMany(()=> Product, (prod)=> prod.ordenes)
-    @JoinColumn()
+     @JoinTable() // <-- SOLO AQUÍ
     productos: Product[]
 }
