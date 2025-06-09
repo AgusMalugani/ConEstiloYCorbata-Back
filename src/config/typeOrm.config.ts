@@ -15,4 +15,7 @@ export const AppDataSource = new DataSource({
     synchronize: true,  
  entities: ['dist/**/*.entity.js'],
     logging: true,
+    ssl: {
+    rejectUnauthorized: false // importante para evitar error de certificados autofirmados
+  },
 })
